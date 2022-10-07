@@ -1,5 +1,7 @@
+noseX = 0;
+noseY = 0;
 function preload(){
-    
+   filtro =loadImage('https://i.postimg.cc/Pq4bL0Ng/pngegg.png'); 
 }
 function setup(){
     canvas = createCanvas(300,300);
@@ -12,6 +14,8 @@ function setup(){
 }
 function draw(){
     image(video,0,0,300,300);
+    
+    image(filtro,noseX,noseY,220,220);
 }
 function take_snapshot(){
     save('SPOOKIES.png');
@@ -22,7 +26,9 @@ function modelLoaded(){
 function gotPoses(results){
     if(results.length>0){
         console.log(results);
-        console.log("nose x= "+results[0].pose.nose.x);
-        console.log("nose y ="+results[0].pose.nose.y);
+        noseX = results[0].pose.nose.x-110;
+        noseY = results[0].pose.nose.y-130;
+        console.log("nose x= "+noseX);
+        console.log("nose y ="+noseY);
     }
 }
